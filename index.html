@@ -30,7 +30,7 @@
                     <li class = "nav-item"><a class = "nav-link" href = "contactus.html"><span class = "fa fa-address-card fa-lg"></span>Contact</a></li>
                 </ul>
                 <span class = "navbar-text">
-                    <a data-toggle="modal" data-target = "#loginModal">
+                    <a id = "btn">
                         <span class = "fa fa-sign-in"></span> Login
                     </a>
                 </span>    
@@ -60,8 +60,6 @@
                                 <label class="sr-only" for="exampleInputPassword3">Password</label>
                                 <input type="password" class="form-control form-control-sm mr-1" id="exampleInputPassword3" placeholder="Password">
                             </div>
-                        </div>
-                        <div class = "form-row">
                             <div class="col-sm-auto">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox">
@@ -91,8 +89,7 @@
                     <img src = "img/logo.png" class = "img-fluid">
                 </div>
                 <div class = "col-12 col-sm align-self-center">
-                    <a class = "btn btn-sm btn-block btn-warning"
-                    data-toggle = "modal" data-target = "#reserveModal">Reserve Table</a>
+                    <a class = "btn btn-sm btn-block btn-warning" id = "btn1">Reserve Table</a>
                 </div>
             </div>
         </div>
@@ -103,7 +100,7 @@
     <div id = "reserveModal" class = "modal fade" role = "dialog">
         <div class = "modal-dialog modal-lg" role = "content">
             <div class = "modal-content">
-                <div class = "modal-header bg-warning">
+                <div class = "modal-header">
                     <h4 class = "modal-title">Reserve a Table</h4>
                     <button type = "button" class = "close" data-dismiss = "modal">
                         &times;
@@ -308,7 +305,34 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src = "js/JQuery.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#mycarousel').carousel({interval: 2000});
+            $('#carouselButton').click(function() {
+                if($('#carouselButton').children('span').hasClass('fa-pause')){
+                    $('#mycarousel').carousel('pause');
+                    $('#carouselButton').children('span').removeClass('fa-pause');
+                    $('#carouselButton').children('span').addClass('fa-play');
+                    // cycle instead of play
+                }
+                else if($('#carouselButton').children('span').hasClass('fa-play')){
+                    $('#mycarousel').carousel('cycle');
+                    $('#carouselButton').children('span').removeClass('fa-play');
+                    $('#carouselButton').children('span').addClass('fa-pause');
+                }
+            });
+            // LOGIN MODAL
+            $("#btn").click(function() {
+                $("#loginModal").modal();
+            });
+
+            // RESERVE MODAL
+            $("#btn1").click(function() {
+                $("#reserveModal").modal();
+            });
+        });
+
+    </script>
 </body>
 
 </html>
